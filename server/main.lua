@@ -1,13 +1,13 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterServerEvent('qb-cleaning:server:recompensa')
-AddEventHandler('qb-cleaning:server:recompensa', function(recompensa)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
+AddEventHandler('qb-cleaning:server:recompensa', function(reward)
+    local _source = source
+    local xPlayer = QBCore.Functions.GetPlayer(_source)
 
-    Player.Functions.AddItem('efectivo', recompensa)
+    xPlayer.Functions.AddItem('efectivo', reward)
 
-    TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['efectivo'], 'add', recompensa)
+    TriggerClientEvent('qb-inventory:client:ItemBox', _source, QBCore.Shared.Items['efectivo'], 'add')
 
-    TriggerClientEvent('QBCore:Notify', src, 'Has recibido ' .. recompensa .. ' de efectivo', 'success')
+    TriggerClientEvent('QBCore:Notify', _source, 'Has recibido ' .. reward .. ' de efectivo', 'success')
 end)
