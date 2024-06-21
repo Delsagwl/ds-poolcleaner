@@ -29,7 +29,7 @@ function createJobBlip()
         RemoveBlip(jobBlip)
         jobBlip = nil
     end
-    jobBlip = AddBlipForCoord(Config.NPCLocation.x, Config.NPCLocation.y, Config.NPCLocation.z)
+    jobBlip = AddBlipForCoord(Config.NPC.x, Config.NPC.y, Config.NPC.z)
     SetBlipSprite(jobBlip, 408)
     SetBlipDisplay(jobBlip, 4)
     SetBlipScale(jobBlip, 0.9)
@@ -75,7 +75,7 @@ function createNPC()
     while not HasModelLoaded(model) do
         Wait(1)
     end
-    npc = CreatePed(4, model, Config.NPCLocation.x, Config.NPCLocation.y, Config.NPCLocation.z - 1.0, Config.NPCLocation.h, false, true)
+    npc = CreatePed(4, model, Config.NPC.x, Config.NPC.y, Config.NPC.z - 1.0, Config.NPC.h, false, true)
     FreezeEntityPosition(npc, true)
     SetEntityInvincible(npc, true)
     SetBlockingOfNonTemporaryEvents(npc, true)
@@ -84,8 +84,8 @@ function createNPC()
         name="cleaning_npc",
         heading=0,
         debugPoly=false,
-        minZ=Config.NPCLocation.z - 1,
-        maxZ=Config.NPCLocation.z + 1
+        minZ=Config.NPC.z - 1,
+        maxZ=Config.NPC.z + 1
     }, {
         options = {
             {
@@ -107,11 +107,12 @@ function spawnVan()
     while not HasModelLoaded(model) do
         Wait(1)
     end
-    van = CreateVehicle(model, Config.VanSpawnPoint.x, Config.VanSpawnPoint.y, Config.VanSpawnPoint.z, Config.VanSpawnPoint.h, true, false)
+    van = CreateVehicle(model, Config.Furgoneta.x, Config.Furgoneta.y, Config.Furgoneta.z, Config.Furgoneta.h, true, false)
     SetEntityAsMissionEntity(van, true, true)
     SetVehicleOnGroundProperly(van)
     SetVehicleDoorsLocked(van, 1)
     SetVehicleNumberPlateText(van, "CLEANER")
+    exports['ps-fuel']:SetFuel(van, 100.0)
     TaskWarpPedIntoVehicle(PlayerPedId(), van, -1)
 end
 
@@ -172,7 +173,7 @@ end)
 
 -- Función para limpiar una zona
 function limpiarZona(coords)
-    TaskStartScenarioInPlace(PlayerPedId(), "world_human_janitor", 0, true)
+    ExecuteCommand("e broom")
     Citizen.Wait(10000) -- 10 segundos
     ClearPedTasks(PlayerPedId())
     puntosLimpios = puntosLimpios + 1
@@ -186,7 +187,7 @@ function limpiarZona(coords)
         QBCore.Functions.Notify("Has completado la tarea de limpieza. Vuelve para recibir una nueva ubicación.", "success")
 
         -- Marcar la ruta de vuelta al NPC
-        blip = AddBlipForCoord(Config.NPCLocation.x, Config.NPCLocation.y, Config.NPCLocation.z)
+        blip = AddBlipForCoord(Config.NPC.x, Config.NPC.y, Config.NPC.z)
         SetBlipSprite(blip, 318)
         SetBlipRoute(blip, true)
         SetBlipColour(blip, 1)
@@ -194,7 +195,7 @@ function limpiarZona(coords)
         SetBlipAsShortRange(blip, false) -- Mostrar blip en el radar a larga distancia
 
         -- Establecer el waypoint al NPC
-        SetNewWaypoint(Config.NPCLocation.x, Config.NPCLocation.y)
+        SetNewWaypoint(Config.NPC.x, Config.NPC.y)
     else
         -- Marca el siguiente punto en el mapa
         local nextLocation = PuntosLimpieza[puntosLimpios + 1]
@@ -206,7 +207,7 @@ end
 -- Detección de zonas de limpieza y mostrar texto
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(6)
         if limpiando then
             local playerCoords = GetEntityCoords(PlayerPedId())
             for _, zona in pairs(PuntosLimpieza) do
