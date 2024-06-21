@@ -18,7 +18,7 @@ Config.RecompensaMin = 20
 Config.RecompensaMax = 70
 
 Config.ZonasLimpieza = {
-    ["Piscina Hotel"] = {
+    ["Hotel"] = {
         vector3(-1354.32, 354.51, 64.08),
         vector3(-1345.54, 357.32, 64.08),
         vector3(-1339.37, 362.74, 64.08),
@@ -39,7 +39,7 @@ Config.ZonasLimpieza = {
         vector3(-1708.42, -458.53, 41.59),
         vector3(-1708.05, -468.11, 41.59),
         vector3(-1706.91, -477.80, 41.59),
-        vector3(-1708.26, -468.65, 41.59),
-        vector3(-1707.75, -478.69, 41.59),
+        vector3(-1702.43, -475.64, 41.65),
+        vector3(-1700.05, -471.45, 41.65),
     },
 }
