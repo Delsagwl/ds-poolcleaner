@@ -1,17 +1,13 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
--- Evento para entregar la recompensa
 RegisterServerEvent('qb-cleaning:server:recompensa')
-AddEventHandler('qb-cleaning:server:recompensa', function(reward)
-    local _source = source
-    local xPlayer = QBCore.Functions.GetPlayer(_source)
+AddEventHandler('qb-cleaning:server:recompensa', function(recompensa)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
 
-    -- Aquí asumimos que 'efectivo' es el nombre del ítem en tu configuración
-    xPlayer.Functions.AddItem('efectivo', reward)
+    Player.Functions.AddItem('efectivo', recompensa)
 
-    -- Notificación al jugador
-    TriggerClientEvent('qb-inventory:client:ItemBox', _source, QBCore.Shared.Items['efectivo'], 'add')
+    TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['efectivo'], 'add', recompensa)
 
-    -- Puedes agregar un mensaje adicional si lo deseas
-    TriggerClientEvent('QBCore:Notify', _source, 'Has recibido ' .. reward .. ' de efectivo', 'success')
+    TriggerClientEvent('QBCore:Notify', src, 'Has recibido ' .. recompensa .. ' de efectivo', 'success')
 end)
