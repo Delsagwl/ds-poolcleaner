@@ -11,7 +11,8 @@ Config.Furgoneta = {
     x = -1307.71,
     y = -1260.6,
     z = 4.07,
-    h = 18.89
+    h = 18.89,
+    matricula = "9R75H01W",
 }
 
 Config.RecompensaMin = 20
