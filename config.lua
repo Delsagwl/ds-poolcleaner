@@ -15,7 +15,7 @@ Config.Furgoneta = {
     matricula = "9R75H01W",
 }
 
-Config.RecompensaMin = 20
+Config.RecompensaMin = 30
 Config.RecompensaMax = 70
 
 Config.ZonasLimpieza = {
@@ -43,4 +43,100 @@ Config.ZonasLimpieza = {
         vector3(-1702.43, -475.64, 41.65),
         vector3(-1700.05, -471.45, 41.65),
     },
+}
+
+Config.Clothes = {
+    male = {
+        components = { {
+                ["component_id"] = 0,
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 1, -- Mask
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 3, -- Upper Body
+                ["texture"] = 0,
+                ["drawable"] = 63
+            }, {
+                ["component_id"] = 4, -- Lower Body
+                ["texture"] = 0,
+                ["drawable"] = 129
+            }, {
+                ["component_id"] = 5, -- Bag
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 6,-- Shoes
+                ["texture"] = 0,
+                ["drawable"] = 25
+            }, {
+                ["component_id"] = 7, -- Scarf & Chains
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 8, -- Shirt
+                ["texture"] = 0,
+                ["drawable"] = 15
+            }, {
+                ["component_id"] = 9, -- Body Armor
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 11, -- Jacket
+                ["texture"] = 1,
+                ["drawable"] = 241
+            },
+        },
+    },
+    female = {
+        components = {
+            {
+                ["component_id"] = 0,
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 1, -- Mask
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 3, -- Upper Body
+                ["texture"] = 0,
+                ["drawable"] = 72
+            }, {
+                ["component_id"] = 4, -- Lower Body
+                ["texture"] = 0,
+                ["drawable"] = 135
+            }, {
+                ["component_id"] = 5, -- Bag
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 6,-- Shoes
+                ["texture"] = 0,
+                ["drawable"] = 25
+            }, {
+                ["component_id"] = 7, -- Scarf & Chains
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 8, -- Shirt
+                ["texture"] = 0,
+                ["drawable"] = 14
+            }, {
+                ["component_id"] = 9, -- Body Armor
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 10,  -- Decals
+                ["texture"] = 0,
+                ["drawable"] = 0
+            }, {
+                ["component_id"] = 11, -- Jacket
+                ["texture"] = 1,
+                ["drawable"] = 250
+            },
+        },
+    }
 }
