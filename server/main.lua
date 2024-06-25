@@ -1,7 +1,7 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterServerEvent('ds-poolcleaning:server:recompensa')
-AddEventHandler('ds-poolcleaning:server:recompensa', function(reward)
+AddEventHandler('ds-poolcleaning:server:recompensa', function(recompensa)
     local src = source
     local player = QBCore.Functions.GetPlayer(src)
     player.Functions.AddItem('efectivo', recompensa)
@@ -24,6 +24,7 @@ AddEventHandler('ds-poolcleaning:server:upfianza', function(plate)
     local player = QBCore.Functions.GetPlayer(src)
     if plate == Config.Furgoneta.matricula then
         player.Functions.RemoveMoney("bank", 250, 'fianza')
+        TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['efectivo'], 'add')
         TriggerClientEvent('QBCore:Notify', src, "Entregas la fianza", 'success')
     end
 end)
